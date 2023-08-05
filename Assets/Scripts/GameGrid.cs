@@ -14,26 +14,18 @@ public class GameGrid : MonoBehaviour
 
     public bool gotGrid;
 
-    public GameObject hitted;
+    private GameObject hitted;
     public GameObject field;
 
     private RaycastHit Hit;
     public bool creatingField;
 
-    public Texture2D basicCursor, fieldCursor, seedCursor;
-    public CursorMode cursorMode = CursorMode.Auto;
-    public Vector2 hotSpot = Vector2.zero;
-
     public GameObject goldSystem;
 
     public int fieldPrice;
+    public int profit;
 
     public GameObject Seed;
-
-    void Awake()
-    {
-        Cursor.SetCursor(basicCursor, hotSpot, cursorMode);
-    }
 
     void Start()
     {
@@ -87,31 +79,25 @@ public class GameGrid : MonoBehaviour
                     hitted= Hit.transform.gameObject;
                     Instantiate(field, hitted.transform.position, Quaternion.identity);
                     Destroy(hitted);
-                    Debug.Log("Get crops +1");
+                    
+                    goldSystem.GetComponent<GoldSystem>().gold += profit;
                 }
             }
         }
 
         if (creatingField == true)
         {
-            Cursor.SetCursor(fieldCursor, hotSpot, cursorMode);
             Product.isSowing = false;
-        }
-        else
-        {
-            Cursor.SetCursor(basicCursor, hotSpot, cursorMode);
         }
 
         if (Shop.beInShop == true)
         {
             creatingField = false;
-            Cursor.SetCursor(basicCursor, hotSpot, cursorMode);
         }
 
         if(Product.isSowing== true)
         {
             creatingField = false;
-            Cursor.SetCursor(seedCursor, hotSpot, cursorMode);
         }
 
         if(Input.GetMouseButtonDown(1))
@@ -139,7 +125,5 @@ public class GameGrid : MonoBehaviour
     {
         creatingField= false;
         Product.isSowing= false;
-
-        Cursor.SetCursor(basicCursor, hotSpot, cursorMode);
     }
 }

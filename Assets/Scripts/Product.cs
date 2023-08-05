@@ -44,7 +44,6 @@ public class Product : MonoBehaviour
         {
             placeSeeds = true;
             whichSeed = id;
-            // goldSystem.GetComponent<GoldSystem>().gold -= price;
 
             currentProductPrice = price;
 

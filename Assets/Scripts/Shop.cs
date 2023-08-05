@@ -10,7 +10,6 @@ public class Shop : MonoBehaviour
     
     public int numberofProduct;
     public GameObject shopWindow;
-    // public GameObject productPrefab;
 
     public GameObject[] products;
 
@@ -67,15 +66,5 @@ public class Shop : MonoBehaviour
                 products[i].SetActive(true);
             }
         }
-    }
-
-    public void Left()
-    {
-
-    }
-
-    public void Right()
-    {
-
     }
 }
