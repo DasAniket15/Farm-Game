@@ -68,9 +68,9 @@ public class GameGrid : MonoBehaviour
                 }
             }
 
-            if(Product.isSowing ==true)
+            if(Product.isSowing == true)
             {
-                if(Hit.transform.CompareTag("Field") && goldSystem.GetComponent<GoldSystem>().gold >= fieldPrice)
+                if(Hit.transform != null && Hit.transform.CompareTag("Field") && goldSystem.GetComponent<GoldSystem>().gold >= fieldPrice)
                 {
                     hitted = Hit.transform.gameObject;
                     Instantiate(Seed, hitted.transform.position, Quaternion.identity);

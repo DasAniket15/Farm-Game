@@ -1519,12 +1519,12 @@ GameObject:
   - component: {fileID: 810917051}
   - component: {fileID: 810917050}
   m_Layer: 0
-  m_Name: Price table
+  m_Name: PriceTable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &810917050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1538,7 +1538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 000000000100000002000000
-  sellingPrice: 190000002d00000041000000
+  sellingPrice: 190000002d0000004b000000
 --- !u!4 &810917051
 Transform:
   m_ObjectHideFlags: 0
@@ -1868,7 +1868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1048525469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1882,14 +1882,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceTable: {fileID: 810917049}
-  amountofstorage: 1000
+  amountOfStorage: 1000
   id: 020000000100000000000000
   productName:
   - 
   - 
   - 
   count: 0a0000000a0000000a000000
-  sellingPrice: 410000002d00000019000000
+  sellingPrice: 4b0000002d00000019000000
 --- !u!4 &1048525470
 Transform:
   m_ObjectHideFlags: 0
@@ -2724,7 +2724,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1553789999
 GameObject:
@@ -2792,7 +2792,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1564195287
 GameObject:
@@ -3923,7 +3923,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2103729527
 GameObject:

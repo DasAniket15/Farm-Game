@@ -5,14 +5,4 @@ using UnityEngine;
 public class Crop : MonoBehaviour
 {
     public int id;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }
