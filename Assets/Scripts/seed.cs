@@ -2,24 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class seed : MonoBehaviour
+public class Seed : MonoBehaviour
 {
-
     public int id;
-
     public GameObject crops;
-    // Start is called before the first frame update
+
     void Start()
     {
-        id = Product.whichseed;
+        id = Product.whichSeed;
 
         StartCoroutine(Wait());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator Wait()
@@ -27,7 +19,7 @@ public class seed : MonoBehaviour
         yield return new WaitForSeconds(5f);
 
         GameObject newCrops = Instantiate(crops, transform.position,  transform.rotation);
-        newCrops.GetComponent<crop>().id = id;
+        newCrops.GetComponent<Crop>().id = id;
         Destroy(this.gameObject);
     }
 }

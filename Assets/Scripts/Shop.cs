@@ -4,31 +4,30 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-
     public int[] id;
     public string[] productName;
     public int[] price;
+    
     public int numberofProduct;
     public GameObject shopWindow;
-    //public GameObject productPrefab;
+    // public GameObject productPrefab;
 
     public GameObject[] products;
 
     public int pagenumber;
 
-    public static bool Beinshop;
+    public static bool beInShop;
 
-    // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < numberofProduct; i++)
         {
             products[i].SetActive(false);
         }
+
         Refresh();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Product.isSowing == true)
@@ -41,7 +40,7 @@ public class Shop : MonoBehaviour
     {
         shopWindow.SetActive(true);
 
-        Beinshop = true;
+        beInShop = true;
 
         Refresh();
     }
@@ -50,8 +49,9 @@ public class Shop : MonoBehaviour
     {
         shopWindow.SetActive(false);
 
-        Beinshop = false;
+        beInShop = false;
     }
+
     public void Refresh()
     {
         for (int i = 0; i < numberofProduct; i++)
@@ -69,4 +69,13 @@ public class Shop : MonoBehaviour
         }
     }
 
+    public void Left()
+    {
+
+    }
+
+    public void Right()
+    {
+
+    }
 }

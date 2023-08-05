@@ -12,29 +12,29 @@ public class GameGrid : MonoBehaviour
 
     public GameObject[] CurrentGrid;
 
-    public bool gotgrid;
-
+    public bool gotGrid;
 
     public GameObject hitted;
     public GameObject field;
+
     private RaycastHit Hit;
-    public bool creatingfield;
+    public bool creatingField;
 
     public Texture2D basicCursor, fieldCursor, seedCursor;
-    public CursorMode cursormode = CursorMode.Auto;
+    public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
 
     public GameObject goldSystem;
 
-    public int fieldprice;
+    public int fieldPrice;
 
-    public GameObject seed;
+    public GameObject Seed;
 
-      void Awake()
+    void Awake()
     {
-        Cursor.SetCursor(basicCursor, hotSpot, cursormode);
+        Cursor.SetCursor(basicCursor, hotSpot, cursorMode);
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         for (int i = 0; i < columnLength * rowLength; i++)
@@ -43,74 +43,75 @@ public class GameGrid : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (gotgrid == false)
+        if (gotGrid == false)
         {
-            CurrentGrid = GameObject.FindGameObjectsWithTag("grid");
-            gotgrid = true;
+            CurrentGrid = GameObject.FindGameObjectsWithTag("Grid");
+            gotGrid = true;
         }
 
         if (Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out Hit))
             {
-                if (creatingfield == true)
+                if (creatingField == true)
                 {
-                    if (Hit.transform.tag == "grid" && goldSystem.GetComponent<GoldSystem>().gold>=fieldprice)
+                    if (Hit.transform.CompareTag("Grid") && goldSystem.GetComponent<GoldSystem>().gold >= fieldPrice)
                     {
                         hitted = Hit.transform.gameObject;
                         Instantiate(field, hitted.transform.position, Quaternion.identity);
                         Destroy(hitted);
 
-
-                        goldSystem.GetComponent<GoldSystem>().gold -= fieldprice;
-
+                        goldSystem.GetComponent<GoldSystem>().gold -= fieldPrice;
                     }
-
-                    Cursor.SetCursor(fieldCursor, hotSpot, cursormode);
                 }
             }
+
             if(Product.isSowing ==true)
             {
-                if(Hit.transform.tag == "field" && goldSystem.GetComponent<GoldSystem>().gold >= fieldprice)
+                if(Hit.transform.CompareTag("Field") && goldSystem.GetComponent<GoldSystem>().gold >= fieldPrice)
                 {
                     hitted = Hit.transform.gameObject;
-                    Instantiate(seed,hitted.transform.position, Quaternion.identity);
+                    Instantiate(Seed, hitted.transform.position, Quaternion.identity);
                     Destroy(hitted);
 
                     goldSystem.GetComponent<GoldSystem>().gold -= Product.currentProductPrice;
                 }
             }
 
-            if(creatingfield == false &&Product.isSowing == false)
+            if(Hit.transform != null && creatingField == false && Product.isSowing == false)
             {
-                if(Hit.transform.tag == "crop")
+                if(Hit.transform.CompareTag("Crop"))
                 {
                     hitted= Hit.transform.gameObject;
                     Instantiate(field, hitted.transform.position, Quaternion.identity);
                     Destroy(hitted);
-                    print("Get crops +1");
+                    Debug.Log("Get crops +1");
                 }
             }
         }
 
-
-        if (creatingfield == true)
+        if (creatingField == true)
         {
-            Cursor.SetCursor(fieldCursor, hotSpot, cursormode);
+            Cursor.SetCursor(fieldCursor, hotSpot, cursorMode);
             Product.isSowing = false;
         }
-        if (Shop.Beinshop == true)
+        else
         {
-            creatingfield = false;
-            Cursor.SetCursor(basicCursor, hotSpot, cursormode);
+            Cursor.SetCursor(basicCursor, hotSpot, cursorMode);
         }
+
+        if (Shop.beInShop == true)
+        {
+            creatingField = false;
+            Cursor.SetCursor(basicCursor, hotSpot, cursorMode);
+        }
+
         if(Product.isSowing== true)
         {
-            creatingfield = false;
-            Cursor.SetCursor(seedCursor, hotSpot, cursormode);
+            creatingField = false;
+            Cursor.SetCursor(seedCursor, hotSpot, cursorMode);
         }
 
         if(Input.GetMouseButtonDown(1))
@@ -118,20 +119,27 @@ public class GameGrid : MonoBehaviour
             ClearCursor();
         }
     }
+
     public void createField()
     {
-        creatingfield = true;
+        creatingField = true;
     }
+
+    public void StopCreatingField()
+    {
+        creatingField = false;
+    }
+
     public void returnToNormality()
     {
-        creatingfield = false;
+        creatingField = false;
     }
 
     public void ClearCursor()
     {
-        creatingfield= false;
+        creatingField= false;
         Product.isSowing= false;
 
-        Cursor.SetCursor(basicCursor,hotSpot, cursormode);
+        Cursor.SetCursor(basicCursor, hotSpot, cursorMode);
     }
 }
